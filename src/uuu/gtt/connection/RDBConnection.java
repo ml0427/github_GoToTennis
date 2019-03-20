@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uuu.gtt.connection;
 
 import java.sql.Connection;
@@ -22,7 +17,6 @@ public class RDBConnection {
 		try {
 			// 載入JDBC Driver
 			Class.forName(driver);
-
 			// 建立連線
 			try {
 				Connection connection = DriverManager.getConnection(url, userid, password);
@@ -35,7 +29,7 @@ public class RDBConnection {
 		}
 	}
 
-	public static void main(String[] args) { // 測試是否連線
+	public static void main(String[] args) {
 		try (Connection connection = getConnection();) {
 			System.out.println("已連線的資料庫名稱：" + connection.getCatalog());
 		} catch (Exception ex) {
