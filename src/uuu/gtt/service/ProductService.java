@@ -27,8 +27,8 @@ public class ProductService {
 		return productsDAO.selectProductById(id);
 	}
 
-	public List<Product> selectProductByName_Category(String name, String category) throws VGBException {
-		return productsDAO.selectProductByName_Category(name, category);
+	public List<Product> selectProductByNameAndCategory(String name, String category) throws VGBException {
+		return productsDAO.selectProductByNameAndCategory(name, category);
 	}
 
 }

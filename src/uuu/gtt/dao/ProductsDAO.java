@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uuu.gtt.dao;
 
 import java.sql.Connection;
@@ -19,10 +14,6 @@ import uuu.gtt.entity.Product;
 import uuu.gtt.entity.VGBException;
 import uuu.gtt.repository.ProductsRepository;
 
-/**
- *
- * @author Administrator
- */
 public class ProductsDAO {
 
 	public static void main(String[] args) {
@@ -37,6 +28,13 @@ public class ProductsDAO {
 		}
 	}
 
+	/**
+	 * selectProductByName 查詢產品(用名稱)
+	 * 
+	 * @param name
+	 * @return
+	 * @throws VGBException
+	 */
 	public List<Product> selectProductByName(String name) throws VGBException {
 
 		try (Connection connection = RDBConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(ProductsRepository.SELECT_PRODUCT_BY_NAME_SQL)) {
@@ -64,7 +62,15 @@ public class ProductsDAO {
 		}
 	}
 
-	public List<Product> selectProductByName_Category(String name, String... category) throws VGBException {
+	/**
+	 * 查詢產品(用名稱+品牌)
+	 * 
+	 * @param name
+	 * @param category
+	 * @return
+	 * @throws VGBException
+	 */
+	public List<Product> selectProductByNameAndCategory(String name, String... category) throws VGBException {
 
 		List<Product> list = new ArrayList<>();
 		String sql = ProductsRepository.SELECT_PRODUCT_BY_CATEGORY_SQL;
