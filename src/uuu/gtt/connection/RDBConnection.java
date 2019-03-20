@@ -39,7 +39,7 @@ public class RDBConnection {
 		try (Connection connection = getConnection();) {
 			System.out.println("已連線的資料庫名稱：" + connection.getCatalog());
 		} catch (Exception ex) {
-			System.out.println(ex);
+			System.err.println(ex);
 		}
 	}
 
