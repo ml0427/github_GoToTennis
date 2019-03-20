@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uuu.gtt.dao;
 
 import java.sql.Connection;
@@ -20,10 +15,6 @@ import uuu.gtt.entity.ViewLog;
 import uuu.gtt.repository.ViewLogRepository;
 import uuu.gtt.service.ViewLogService;
 
-/**
- *
- * @author Administrator
- */
 public class ViewLogDAO {
 
 	public static void main(String[] args) throws VGBException {
@@ -36,6 +27,13 @@ public class ViewLogDAO {
 		System.out.println(" vl.selectViewLogById(1)==" + list);
 	}
 
+	/**
+	 * selectViewLogById
+	 * 
+	 * @param product_id
+	 * @return
+	 * @throws VGBException
+	 */
 	public List<ViewLog> selectViewLogById(int product_id) throws VGBException {
 
 		List<ViewLog> list = new ArrayList<>();
@@ -57,6 +55,12 @@ public class ViewLogDAO {
 		}
 	}
 
+	/**
+	 * insert
+	 * 
+	 * @param v
+	 * @throws VGBException
+	 */
 	public void insert(ViewLog v) throws VGBException {
 
 		try (Connection connection = RDBConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(ViewLogRepository.INSERT_VIEWLOG_SQL);) {
@@ -69,6 +73,13 @@ public class ViewLogDAO {
 		}
 	}
 
+	/**
+	 * selectViewLogByCustomerEmail
+	 * 
+	 * @param customerEmail
+	 * @return
+	 * @throws VGBException
+	 */
 	public List<ViewLog> selectViewLogByCustomerEmail(String customerEmail) throws VGBException {
 
 		List<ViewLog> list = new ArrayList<>();

@@ -117,6 +117,13 @@ public class ProductsDAO {
 		}
 	}
 
+	/**
+	 * selectProductById
+	 * 
+	 * @param id
+	 * @return
+	 * @throws VGBException
+	 */
 	public Product selectProductById(int id) throws VGBException {
 
 		try (Connection connection = RDBConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(ProductsRepository.SELECT_PRODUCT_BY_ID_SQL);) {
@@ -144,6 +151,12 @@ public class ProductsDAO {
 		}
 	}
 
+	/**
+	 * createProductObject
+	 * 
+	 * @param classStr
+	 * @return
+	 */
 	private Product createProductObject(String classStr) {
 
 		String className = Product.class.getName();

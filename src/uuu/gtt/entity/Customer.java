@@ -131,7 +131,6 @@ public class Customer {
 		if (!(obj instanceof Customer)) {
 			return false;
 		}
-
 		if (email == null) {
 			if (other.email != null) {
 				return false;
