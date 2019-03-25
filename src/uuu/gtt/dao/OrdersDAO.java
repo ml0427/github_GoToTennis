@@ -33,13 +33,24 @@ public class OrdersDAO {
 		Order order = null;
 		OrderService service = new OrderService();
 
-		list = service.findOrdersByCustomerEmail("ml0427@gmail.com");
-		System.out.println("ml0427的訂單列表" + list);
+		// list = service.findOrdersByCustomerEmail("ml0427@gmail.com");
+		// System.out.println("ml0427的訂單列表" + list);
 
-		order = service.findOrderById(Integer.parseInt("14"));
-		System.out.println("訂單編號14的內容" + order);
+		int id = 58;
+		order = service.findOrderById(id);
+		Order orderNwe = new Order();
+		order.setId(0);
+		System.out.println("訂單編號" + id + "的內容" + order);
+
+		service.insert(order);
 	}
 
+	/**
+	 * insert
+	 * 
+	 * @param order
+	 * @throws VGBException
+	 */
 	public void insert(Order order) throws VGBException {
 
 		try (Connection connection = RDBConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(OrdersRepository.INSERT_ORDER_SQL, PreparedStatement.RETURN_GENERATED_KEYS);) {
@@ -64,6 +75,7 @@ public class OrdersDAO {
 					int id = 0;
 					while (rs.next()) {
 						id = rs.getInt(1);
+						System.err.println(">>>" + id);
 					}
 					if (id > 0) {
 						order.setId(id);
@@ -76,9 +88,8 @@ public class OrdersDAO {
 						for (OrderItem item : order.getOrderItemSet()) {
 							pstmt2.setInt(1, order.getId());
 							pstmt2.setInt(2, item.getProduct().getId());
-							pstmt2.setString(3, item.getColor());
-							pstmt2.setDouble(4, item.getPrice());
-							pstmt2.setInt(5, item.getQuantity());
+							pstmt2.setDouble(3, item.getPrice());
+							pstmt2.setInt(4, item.getQuantity());
 							pstmt2.executeUpdate();
 						}
 					}
