@@ -96,30 +96,19 @@ public class CustomersDAO {
 		try (Connection connection = RDBConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(CustomersRepository.SELECT_CUSTOMER_BY_ID_SQL);) {
 			pstmt.setString(1, dataEmail);
 			try (ResultSet rs = pstmt.executeQuery();) {
-				Customer c = null;
+				Customer customer = null;
 				while (rs.next()) {
-					String classStr = rs.getString("class");
-					String id = rs.getString("id");
-					String name = rs.getString("name");
-					String password = rs.getString("password");
-					char gender = rs.getString("gender").charAt(0);
-					String email = rs.getString("email");
-					String birthday = rs.getString("birthday");
-					String phone = rs.getString("phone");
-					String address = rs.getString("address");
-
-					c = this.createCustomerObject(classStr);
-
-					c.setId(id);
-					c.setName(name);
-					c.setPassword(password);
-					c.setGender(gender);
-					c.setEmail(email);
-					c.setBirthday(LocalDate.parse(birthday));
-					c.setPhone(phone);
-					c.setAddress(address);
+					customer = this.createCustomerObject(rs.getString("class"));
+					customer.setId(rs.getString("id"));
+					customer.setName(rs.getString("name"));
+					customer.setPassword(rs.getString("password"));
+					customer.setGender(rs.getString("gender").charAt(0));
+					customer.setEmail(rs.getString("email"));
+					customer.setBirthday(LocalDate.parse(rs.getString("birthday")));
+					customer.setPhone(rs.getString("phone"));
+					customer.setAddress(rs.getString("address"));
 				}
-				return c;
+				return customer;
 			}
 		} catch (SQLException ex) {
 			throw new VGBException("查詢客戶失敗", ex);
@@ -139,13 +128,13 @@ public class CustomersDAO {
 		if (classStr != null) {
 			className = className.replace("Customer", classStr);
 		}
-		Customer c;
+		Customer customer;
 		try {
-			c = (Customer) Class.forName(className).newInstance();
+			customer = (Customer) Class.forName(className).newInstance();
 		} catch (Exception ex) {
-			c = new Customer();
+			customer = new Customer();
 		}
-		return c;
+		return customer;
 	}
 
 }
