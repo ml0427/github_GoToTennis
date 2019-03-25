@@ -18,12 +18,10 @@ public class RDBConnection {
 			// 載入JDBC Driver
 			Class.forName(driver);
 			// 建立連線
-			try {
-				Connection connection = DriverManager.getConnection(url, userid, password);
-				return connection;
-			} catch (SQLException ex) {
-				throw new VGBException("資料庫連線失敗!", ex);
-			}
+			Connection connection = DriverManager.getConnection(url, userid, password);
+			return connection;
+		} catch (SQLException ex) {
+			throw new VGBException("資料庫連線失敗!", ex);
 		} catch (ClassNotFoundException ex) {
 			throw new VGBException("載入JDBC Driver失敗: " + driver);
 		}
