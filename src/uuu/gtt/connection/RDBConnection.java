@@ -9,7 +9,7 @@ import uuu.gtt.entity.VGBException;
 public class RDBConnection {
 
 	private static final String driver = "com.mysql.jdbc.Driver";
-	private static final String url = "jdbc:mysql://localhost:3306/gtt?zeroDateTimeBehavior=convertToNull";
+	private static final String url = "jdbc:mysql://localhost:3306/gtt?zeroDateTimeBehavior=convertToNull&useSSL=false";
 	private static final String userid = "root", password = "1234";
 
 	public static Connection getConnection() throws VGBException {

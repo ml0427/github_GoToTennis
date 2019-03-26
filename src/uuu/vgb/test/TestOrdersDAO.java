@@ -63,7 +63,7 @@ public class TestOrdersDAO {
 
 		OrdersDAO dao = new OrdersDAO();
 		// dao.insert(order1);
-		List<Order> list = dao.selectOrdersByCustomerEmail(c.getEmail());
+		List<Order> list = dao.selectOrdersByEmail(c.getEmail());
 		System.out.println("list = " + list);
 
 		// Cart cart2 = new Cart();

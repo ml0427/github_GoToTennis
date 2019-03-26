@@ -37,7 +37,7 @@ public class OrdersDAO {
 		// System.out.println("ml0427的訂單列表" + list);
 
 		int id = 58;
-		order = service.findOrderById(id);
+		order = service.selectOrderById(id);
 		Order orderNwe = new Order();
 		order.setId(0);
 		System.out.println("訂單編號" + id + "的內容" + order);
@@ -75,7 +75,6 @@ public class OrdersDAO {
 					int id = 0;
 					while (rs.next()) {
 						id = rs.getInt(1);
-						System.err.println(">>>" + id);
 					}
 					if (id > 0) {
 						order.setId(id);
@@ -119,7 +118,7 @@ public class OrdersDAO {
 		}
 	}
 
-	public List<Order> selectOrdersByCustomerEmail(String customerId) throws VGBException {
+	public List<Order> selectOrdersByEmail(String customerId) throws VGBException {
 
 		List<Order> list = new ArrayList<>();
 		try (Connection connection = RDBConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(OrdersRepository.SELECT_ORDER_BY_CUSTOMER_EMAIL);) {
