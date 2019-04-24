@@ -19,11 +19,11 @@ public class ProductService {
 
 	private ProductsDAO productsDAO = new ProductsDAO();
 
-	public List<Product> findProductByName(String name) throws VGBException {
+	public List<Product> selectProductByName(String name) throws VGBException {
 		return productsDAO.selectProductByName(name);
 	}
 
-	public Product findProductById(int id) throws VGBException {
+	public Product selectProductById(int id) throws VGBException {
 		return productsDAO.selectProductById(id);
 	}
 

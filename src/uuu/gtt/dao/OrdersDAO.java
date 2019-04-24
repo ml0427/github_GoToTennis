@@ -23,26 +23,25 @@ import uuu.gtt.entity.VGBException;
 import uuu.gtt.repository.OrderItemsRepository;
 import uuu.gtt.repository.OrdersRepository;
 import uuu.gtt.repository.ProductsRepository;
-import uuu.gtt.service.OrderService;
 
 public class OrdersDAO {
 
 	public static void main(String[] args) throws VGBException {
 
-		List<Order> list = null;
-		Order order = null;
-		OrderService service = new OrderService();
-
-		// list = service.findOrdersByCustomerEmail("ml0427@gmail.com");
-		// System.out.println("ml0427的訂單列表" + list);
-
-		int id = 58;
-		order = service.selectOrderById(id);
-		Order orderNwe = new Order();
-		order.setId(0);
-		System.out.println("訂單編號" + id + "的內容" + order);
-
-		service.insert(order);
+		// List<Order> list = null;
+		// Order order = null;
+		// OrderService service = new OrderService();
+		//
+		// // list = service.findOrdersByCustomerEmail("ml0427@gmail.com");
+		// // System.out.println("ml0427的訂單列表" + list);
+		//
+		// int id = 58;
+		// order = service.selectOrderById(id);
+		// Order orderNwe = new Order();
+		// order.setId(0);
+		// System.out.println("訂單編號" + id + "的內容" + order);
+		//
+		// service.insert(order);
 	}
 
 	/**
@@ -118,6 +117,13 @@ public class OrdersDAO {
 		}
 	}
 
+	/**
+	 * selectOrdersByEmail
+	 * 
+	 * @param customerId
+	 * @return
+	 * @throws VGBException
+	 */
 	public List<Order> selectOrdersByEmail(String customerId) throws VGBException {
 
 		List<Order> list = new ArrayList<>();
@@ -158,6 +164,13 @@ public class OrdersDAO {
 		}
 	}
 
+	/**
+	 * selectOrderById
+	 * 
+	 * @param orderId
+	 * @return
+	 * @throws VGBException
+	 */
 	public Order selectOrderById(int orderId) throws VGBException {
 
 		Order order = null;

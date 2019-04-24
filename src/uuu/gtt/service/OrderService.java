@@ -30,7 +30,7 @@ public class OrderService {
 		}
 		// 檢查庫存
 		for (OrderItem item : order.getOrderItemSet()) {
-			Product product = productService.findProductById(item.getProduct().getId());
+			Product product = productService.selectProductById(item.getProduct().getId());
 			if (product.getStock() < item.getProduct().getStock()) {
 				throw new IllegalArgumentException(product.getName() + " 庫存不足");
 			}

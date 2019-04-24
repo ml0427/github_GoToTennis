@@ -29,9 +29,9 @@ public class TestOrdersDAO {
 		// Customer vip = service.login("A223456781", "123456");
 
 		ProductService pService = new ProductService();
-		Product p1 = pService.findProductById(1);
-		Product p2 = pService.findProductById(51);
-		Product p3 = pService.findProductById(1);
+		Product p1 = pService.selectProductById(1);
+		Product p2 = pService.selectProductById(51);
+		Product p3 = pService.selectProductById(1);
 		// Product pNull = pService.findProductById(551);
 
 		Cart cart1 = new Cart();
